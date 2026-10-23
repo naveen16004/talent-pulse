@@ -1,0 +1,23 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Sensitive environment variables
+.env
+.env.*
+!.env.example
+
+# IDE configurations
+.vscode/
+.idea/
+
+# OS metadata
+.DS_Store
+Thumbs.db
