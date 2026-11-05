@@ -22,6 +22,7 @@ An enterprise-ready candidate profiling and resume evaluation system. TalentPuls
 ---
 
 ## 🏗️ System Architecture
+```
 
 +-------------------------------+
              |       Recruiter UI            |
@@ -42,6 +43,7 @@ An enterprise-ready candidate profiling and resume evaluation system. TalentPuls
      | In-Memory PDF |               | LLM Evaluator |
      | Parser (pypdf)|               | (Groq / Llama)|
      +---------------+               +---------------+
+```
 
 
 ## 🚀 Quickstart
