@@ -66,6 +66,7 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
 2. Configure Environment Variables
 Create a .env file in the project root:
