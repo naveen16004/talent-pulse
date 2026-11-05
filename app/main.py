@@ -1,3 +1,4 @@
+import traceback
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.parser import extract_text_from_pdf
@@ -10,7 +11,6 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Enable CORS for dashboard and external frontends
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -36,7 +36,17 @@ async def screen_candidate(
     if not job_description.strip():
         raise HTTPException(status_code=400, detail="Job description cannot be empty.")
 
-    contents = await resume.read()
-    resume_text = extract_text_from_pdf(contents)
-    result = evaluate_candidate(resume_text, job_description)
-    return result
+    try:
+        contents = await resume.read()
+        resume_text = extract_text_from_pdf(contents)
+        result = evaluate_candidate(resume_text, job_description)
+        return result
+    except HTTPException:
+        raise
+    except Exception as exc:
+        # Print full trace to terminal and return exact message to Streamlit
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=500,
+            detail=f"{type(exc).__name__}: {str(exc)}"
+        )
