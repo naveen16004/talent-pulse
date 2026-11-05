@@ -24,7 +24,7 @@ An enterprise-ready candidate profiling and resume evaluation system. TalentPuls
 ## 🏗️ System Architecture
 ```
 
-+-------------------------------+
+             +-------------------------------+
              |       Recruiter UI            |
              |     (Streamlit :8501)         |
              +---------------+---------------+
